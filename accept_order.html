@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" defer src="assets/js/accept.js"></script>
+    <title>Accepting Order</title>
+    <style>
+        /* Fade In Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scale Up Animation */
+        @keyframes scaleUp {
+            from {
+                transform: scale(0.95);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Slide In Animation */
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        /* Apply animations to elements */
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .animate-scale-up {
+            animation: scaleUp 0.3s ease-out forwards;
+        }
+
+        .animate-slide-in {
+            animation: slideIn 0.5s ease-out forwards;
+        }
+
+        /* Stagger children animations */
+        .stagger-children>* {
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .stagger-children>*:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .stagger-children>*:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .stagger-children>*:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .stagger-children>*:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .stagger-children>*:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="text-gray-600 body-font bg-blue-500 animate-slide-in">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center justify-between">
+            <a
+                class="flex title-font font-medium items-center text-gray-900 transform hover:scale-105 transition-transform duration-200">
+                <img src="assets/images/logo.jpg" alt="Dorm Dash Logo" class="w-12 h-12 rounded-full">
+                <span class="ml-3 text-xl text-white">Dorm Dash</span>
+            </a>
+            <nav class="flex space-x-5 text-white text-lg">
+                <a href="index.html"
+                    class="hover:text-gray-900 transform hover:scale-105 transition-transform duration-200">Home</a>
+                <a href="available_requests.html"
+                    class="hover:text-gray-900 transform hover:scale-105 transition-transform duration-200">Available
+                    Requests</a>
+                <a href="make_order.html"
+                    class="hover:text-gray-900 transform hover:scale-105 transition-transform duration-200">Make a
+                    Request</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Order Details -->
+    <section class="container mx-auto px-5 py-10">
+        <h1 class="text-2xl font-semibold text-gray-800 mb-6 animate-fade-in">Order Details</h1>
+        <div class="bg-white shadow-md rounded-lg p-5 border animate-scale-up">
+            <div class="stagger-children">
+                <h2 id="orderTitle" class="text-lg font-semibold text-gray-900"></h2>
+                <p id="orderDescription" class="text-gray-600"></p>
+                <p id="orderReward" class="text-gray-600 font-semibold"></p>
+                <p id="orderDeadline" class="text-gray-600 font-semibold"></p>
+
+                <!-- Input fields for name and phone -->
+                <input type="text" id="userName" placeholder="Enter your name"
+                    class="mt-3 block w-full p-2 border rounded transform hover:scale-105 transition-transform duration-200">
+                <input type="text" id="userPhone" placeholder="Enter your phone number"
+                    class="mt-3 block w-full p-2 border rounded transform hover:scale-105 transition-transform duration-200">
+                <input type="text" id="userLocation" placeholder="Enter Google Maps link"
+                    class="mt-3 block w-full p-2 border rounded transform hover:scale-105 transition-transform duration-200">
+
+                <div class="mt-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Upload Your Photo:</label>
+                    <input type="file" id="userPhoto" accept="image/*" class="block w-full text-sm text-gray-500
+                        file:mr-4 file:py-2 file:px-4
+                        file:rounded-full file:border-0
+                        file:text-sm file:font-semibold
+                        file:bg-blue-50 file:text-blue-700
+                        hover:file:bg-blue-100 transform hover:scale-105 transition-transform duration-200">
+                    <p class="text-sm text-gray-500 mt-1">This photo will be displayed in the orders page</p>
+                </div>
+
+                <div class="mt-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Payment QR Code:</label>
+                    <input type="file" id="paymentQR" accept="image/*" class="block w-full text-sm text-gray-500
+                        file:mr-4 file:py-2 file:px-4
+                        file:rounded-full file:border-0
+                        file:text-sm file:font-semibold
+                        file:bg-blue-50 file:text-blue-700
+                        hover:file:bg-blue-100 transform hover:scale-105 transition-transform duration-200">
+                    <p class="text-sm text-gray-500 mt-1">Upload your payment QR code image</p>
+                </div>
+
+                <button id="confirmOrder"
+                    class="mt-3 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transform hover:scale-105 transition-transform duration-200">
+                    Confirm Order
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-gray-600 body-font text-center py-4 animate-fade-in">
+        <p class="text-sm text-gray-500">© 2024 Dorm Dash. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

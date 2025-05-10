@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Enhanced Fade In Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Enhanced Scale Up Animation */
+        @keyframes scaleUp {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Enhanced Slide In Animation */
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* New Bounce Animation */
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* New Pulse Animation */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* New Shine Effect */
+        @keyframes shine {
+            0% {
+                background-position: -100% 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        /* Apply animations to elements */
+        .animate-fade-in {
+            animation: fadeIn 0.7s ease-out forwards;
+        }
+
+        .animate-scale-up {
+            animation: scaleUp 0.5s ease-out forwards;
+        }
+
+        .animate-slide-in {
+            animation: slideIn 0.7s ease-out forwards;
+        }
+
+        .animate-bounce {
+            animation: bounce 2s infinite;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Gradient background animation */
+        .gradient-bg {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Glass morphism effect */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Form input animations */
+        .form-input {
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Button hover effects */
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+
+        .btn-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Card hover effects */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {}
+            }
+        }
+    </script>
+    <title>Make Order - Dorm Dash</title>
+</head>
+
+<body
+    class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white transition-colors duration-300"
+    id="theme">
+    <!-- Header -->
+    <header class="gradient-bg text-white animate-slide-in">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <nav class="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
+                <a href="index.html"
+                    class="mr-5 hover:text-white font-semibold p-2 bg-white/20 backdrop-blur-sm rounded-md transform hover:scale-105 transition-all duration-300 hover:shadow-lg">Home</a>
+                <a href="available_requests.html"
+                    class="mr-5 hover:text-white font-semibold p-2 bg-white/20 backdrop-blur-sm rounded-md transform hover:scale-105 transition-all duration-300 hover:shadow-lg">Available</a>
+                <a href="make_order.html"
+                    class="mr-5 hover:text-white font-semibold p-2 bg-white/20 backdrop-blur-sm rounded-md transform hover:scale-105 transition-all duration-300 hover:shadow-lg">Make
+                    Request</a>
+            </nav>
+            <a href="index.html"
+                class="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center text-white lg:items-center lg:justify-center mb-4 md:mb-0 transform hover:scale-105 transition-all duration-300">
+                <img src="assets/images/logo.jpg" alt="Dorm Dash Logo" class="w-12 h-12 rounded-full animate-bounce">
+                <span class="ml-3 text-xl">Dorm Dash</span>
+            </a>
+            <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
+                <button id="toggleDarkMode"
+                    class="px-4 py-2 bg-white/20 backdrop-blur-sm text-white rounded-md ml-4 hover:bg-white/30 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                    Dark Mode
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="max-w-3xl mx-auto">
+            <h1
+                class="text-3xl font-bold text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 animate-fade-in">
+                Make a New Order
+            </h1>
+
+            <!-- Order Form -->
+            <form id="orderForm" class="bg-white/90 dark:bg-gray-800/90 p-8 rounded-lg shadow-lg animate-scale-up">
+                <div class="space-y-6">
+                    <!-- Title -->
+                    <div>
+                        <label for="title" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Order
+                            Title</label>
+                        <input type="text" id="title" name="title" required
+                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700/50 dark:text-white form-input"
+                            placeholder="e.g., Pick up laundry from Hostel A">
+                    </div>
+
+                    <!-- Description -->
+                    <div>
+                        <label for="description"
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Description</label>
+                        <textarea id="description" name="description" rows="4" required
+                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700/50 dark:text-white form-input"
+                            placeholder="Provide detailed information about your order..."></textarea>
+                    </div>
+
+                    <!-- Company Selection -->
+                    <div>
+                        <label for="company"
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Company</label>
+                        <select id="company" name="company" required
+                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700/50 dark:text-white form-input"
+                            onchange="toggleOtherCompany()">
+                            <option value="">Select a company</option>
+                            <option value="zomato">Zomato</option>
+                            <option value="swiggy">Swiggy</option>
+                            <option value="dunzo">Dunzo</option>
+                            <option value="rapido">Rapido</option>
+                            <option value="uber">Uber</option>
+                            <option value="ola">Ola</option>
+                            <option value="blinkit">Blinkit</option>
+                            <option value="bigbasket">BigBasket</option>
+                            <option value="grofers">Grofers</option>
+                            <option value="amazon">Amazon</option>
+                            <option value="flipkart">Flipkart</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Other Company Input (hidden by default) -->
+                    <div id="otherCompanyDiv" class="hidden">
+                        <label for="otherCompany"
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Specify
+                            Company</label>
+                        <input type="text" id="otherCompany" name="otherCompany"
+                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700/50 dark:text-white form-input"
+                            placeholder="Enter company name">
+                    </div>
+
+                    <!-- Location -->
+                    <div>
+                        <label for="location"
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Pickup
+                            Location (Google Maps Link)</label>
+                        <input type="url" id="location" name="location" required
+                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700/50 dark:text-white form-input"
+                            placeholder="https://maps.google.com/...">
+                        <p class="text-sm text-gray-500 mt-1">Paste the Google Maps link for pickup location</p>
+                    </div>
+
+                    <!-- Delivery Location -->
+                    <div>
+                        <label for="deliveryLocation"
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Delivery
+                            Location (Google Maps Link)</label>
+                        <input type="url" id="deliveryLocation" name="deliveryLocation" required
+                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700/50 dark:text-white form-input"
+                            placeholder="https://maps.google.com/...">
+                        <p class="text-sm text-gray-500 mt-1">Paste the Google Maps link for delivery location</p>
+                    </div>
+
+                    <!-- Deadline -->
+                    <div>
+                        <label for="deadline"
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Deadline</label>
+                        <input type="datetime-local" id="deadline" name="deadline" required
+                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700/50 dark:text-white form-input">
+                    </div>
+
+                    <!-- Reward -->
+                    <div class="mb-4">
+                        <label for="reward" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Reward
+                            Amount (₹)</label>
+                        <input type="number" id="reward" name="reward" required min="0"
+                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700/50 dark:text-white">
+                    </div>
+                    <div class="mb-4 flex items-center">
+                        <input type="checkbox" id="negotiable" name="negotiable"
+                            class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                        <label for="negotiable" class="ml-2 block text-sm text-gray-700 dark:text-gray-300">
+                            Allow bargaining for this order
+                        </label>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit"
+                        class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 rounded-md font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg btn-hover">
+                        Place Order
+                    </button>
+                </div>
+            </form>
+
+            <!-- Order Tips -->
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white/90 dark:bg-gray-800/90 p-6 rounded-lg shadow-lg card-hover">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800 dark:text-white">Tips for a Good Order</h3>
+                    <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                        <li>• Be specific about your requirements</li>
+                        <li>• Provide clear pickup and delivery locations</li>
+                        <li>• Set a reasonable deadline</li>
+                        <li>• Include any special instructions</li>
+                    </ul>
+                </div>
+                <div class="bg-white/90 dark:bg-gray-800/90 p-6 rounded-lg shadow-lg card-hover">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800 dark:text-white">Order Status</h3>
+                    <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                        <li>• Pending: Waiting for acceptance</li>
+                        <li>• Accepted: Order has been taken</li>
+                        <li>• In Progress: Being completed</li>
+                        <li>• Completed: Order finished</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-teal-500 body-font animate-fade-in">
+        <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+            <a
+                class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900 dark:text-white transform hover:scale-105 transition-transform duration-200">
+                <img src="assets/images/logo.jpg" alt="Dorm Dash Logo" class="w-12 h-12 rounded-full animate-bounce">
+                <span class="text-indigo-500 ml-3 text-xl">Dorm Dash</span>
+            </a>
+            <p
+                class="text-sm text-gray-500 dark:text-gray-400 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 dark:border-gray-700 sm:py-2 sm:mt-0 mt-4">
+                © 2024
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAeOS8_0tDWKnfAwLf0GRKr6JaopYj1nnY",
+            authDomain: "dormdash-40a10.firebaseapp.com",
+            projectId: "dormdash-40a10",
+            storageBucket: "dormdash-40a10.appspot.com",
+            messagingSenderId: "219135353050",
+            appId: "1:219135353050:web:49446a2e74414ebf8105e3"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const auth = firebase.auth();
+
+        // Check authentication state
+        auth.onAuthStateChanged((user) => {
+            if (!user) {
+                alert('Please log in to place an order');
+                window.location.href = 'index.html';
+                return;
+            }
+            // User is signed in, show the form
+            document.getElementById('orderForm').style.display = 'block';
+        });
+
+        // Dark mode toggle functionality
+        const toggleBtn = document.getElementById('toggleDarkMode');
+        const theme = document.getElementById('theme');
+
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            toggleBtn.innerText = "Light Mode";
+        } else {
+            document.documentElement.classList.remove('dark');
+            toggleBtn.innerText = "Dark Mode";
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.add('transitioning');
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+                toggleBtn.innerText = "Dark Mode";
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+                toggleBtn.innerText = "Light Mode";
+            }
+            setTimeout(() => {
+                document.documentElement.classList.remove('transitioning');
+            }, 300);
+        });
+
+        // Form submission handling
+        document.getElementById('orderForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            try {
+                // Get current user
+                const user = auth.currentUser;
+                if (!user) {
+                    alert('Please log in to place an order');
+                    window.location.href = 'index.html';
+                    return;
+                }
+
+                // Get form values
+                const title = document.getElementById('title').value;
+                const description = document.getElementById('description').value;
+                const company = document.getElementById('company').value;
+                const otherCompany = document.getElementById('otherCompany').value;
+                const location = document.getElementById('location').value;
+                const deliveryLocation = document.getElementById('deliveryLocation').value;
+                const deadline = document.getElementById('deadline').value;
+                const reward = parseInt(document.getElementById('reward').value);
+                const negotiable = document.getElementById('negotiable').checked;
+
+                // Create order object
+                const order = {
+                    title,
+                    description,
+                    company: company === 'other' ? otherCompany : company,
+                    location,
+                    deliveryLocation,
+                    deadline: new Date(deadline),
+                    reward: Number(reward),
+                    negotiable,
+                    createdBy: user.email,
+                    status: 'pending',
+                    taken: false,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                };
+
+                // Save to Firestore
+                await db.collection('requests').add(order);
+
+                alert('Order placed successfully!');
+                window.location.href = 'your_orders.html';
+            } catch (error) {
+                console.error('Error saving order:', error);
+                alert('Error placing order. Please try again.');
+            }
+        });
+
+        function toggleOtherCompany() {
+            const companySelect = document.getElementById('company');
+            const otherCompanyDiv = document.getElementById('otherCompanyDiv');
+            const otherCompanyInput = document.getElementById('otherCompany');
+
+            if (companySelect.value === 'other') {
+                otherCompanyDiv.classList.remove('hidden');
+                otherCompanyInput.required = true;
+            } else {
+                otherCompanyDiv.classList.add('hidden');
+                otherCompanyInput.required = false;
+            }
+        }
+    </script>
+</body>
+
+</html>

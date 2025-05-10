@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="assets/js/profile.js"></script>
+    <title>Profile - Dorm Dash</title>
+    <style>
+        /* Enhanced Fade In Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Enhanced Scale Up Animation */
+        @keyframes scaleUp {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Enhanced Slide In Animation */
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Gradient background animation */
+        .gradient-bg {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Glass morphism effect */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Card hover effects */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Apply animations */
+        .animate-fade-in {
+            animation: fadeIn 0.7s ease-out forwards;
+        }
+
+        .animate-scale-up {
+            animation: scaleUp 0.5s ease-out forwards;
+        }
+
+        .animate-slide-in {
+            animation: slideIn 0.7s ease-out forwards;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white transition-colors duration-300">
+    <!-- Header -->
+    <header class="gradient-bg text-white animate-slide-in">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <nav class="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
+                <a href="index.html"
+                    class="mr-5 hover:text-white font-semibold p-2 bg-white/20 backdrop-blur-sm rounded-md transform hover:scale-105 transition-all duration-300 hover:shadow-lg">Home</a>
+                <a href="available_requests.html"
+                    class="mr-5 hover:text-white font-semibold p-2 bg-white/20 backdrop-blur-sm rounded-md transform hover:scale-105 transition-all duration-300 hover:shadow-lg">Available</a>
+                <a href="make_order.html"
+                    class="mr-5 hover:text-white font-semibold p-2 bg-white/20 backdrop-blur-sm rounded-md transform hover:scale-105 transition-all duration-300 hover:shadow-lg">Make
+                    Request</a>
+            </nav>
+            <a href="index.html"
+                class="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center text-white lg:items-center lg:justify-center mb-4 md:mb-0 transform hover:scale-105 transition-all duration-300">
+                <img src="assets/images/logo.jpg" alt="Dorm Dash Logo" class="w-12 h-12 rounded-full">
+                <span class="ml-3 text-xl">Dorm Dash</span>
+            </a>
+            <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
+                <button id="toggleDarkMode"
+                    class="px-4 py-2 bg-white/20 backdrop-blur-sm text-white rounded-md ml-4 hover:bg-white/30 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                    Dark Mode
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="max-w-4xl mx-auto">
+            <!-- Profile Header -->
+            <div class="bg-white/90 dark:bg-gray-800/90 rounded-lg shadow-lg p-6 mb-8 animate-scale-up">
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <img id="profilePhoto" src="https://ui-avatars.com/api/?name=User" alt="ID Card"
+                            class="w-32 h-32 rounded-lg border-4 border-blue-500 object-cover">
+                        <div class="absolute bottom-0 right-0 bg-blue-500 text-white text-xs px-2 py-1 rounded-tl-lg">
+                            ID Card
+                        </div>
+                    </div>
+                    <div>
+                        <h1 id="userName" class="text-2xl font-bold text-gray-900 dark:text-white">Loading...</h1>
+                        <p id="userEmail" class="text-gray-600 dark:text-gray-300">Loading...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white/90 dark:bg-gray-800/90 rounded-lg shadow-lg p-6 text-center card-hover">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Orders Placed</h3>
+                    <p id="ordersPlaced" class="text-3xl font-bold text-blue-500">0</p>
+                </div>
+                <div class="bg-white/90 dark:bg-gray-800/90 rounded-lg shadow-lg p-6 text-center card-hover">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Orders Accepted</h3>
+                    <p id="ordersAccepted" class="text-3xl font-bold text-green-500">0</p>
+                </div>
+                <div class="bg-white/90 dark:bg-gray-800/90 rounded-lg shadow-lg p-6 text-center card-hover">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Total Earnings</h3>
+                    <p id="totalEarnings" class="text-3xl font-bold text-purple-500">₹0</p>
+                </div>
+            </div>
+
+            <!-- Settings Section -->
+            <div class="bg-white/90 dark:bg-gray-800/90 rounded-lg shadow-lg p-6">
+                <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Account Settings</h2>
+                <form id="settingsForm" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Display
+                            Name</label>
+                        <input type="text" id="displayName" name="displayName"
+                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700/50 dark:text-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Phone
+                            Number</label>
+                        <input type="tel" id="phoneNumber" name="phoneNumber"
+                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700/50 dark:text-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">ID Card
+                            Photo</label>
+                        <input type="file" id="profilePhotoInput" accept="image/*"
+                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700/50 dark:text-white">
+                        <p class="text-sm text-gray-500 mt-1">Upload a clear photo of your ID card</p>
+                    </div>
+                    <button type="submit"
+                        class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-2 rounded-md font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                        Save Changes
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-teal-500 body-font animate-fade-in">
+        <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+            <a
+                class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900 dark:text-white transform hover:scale-105 transition-transform duration-200">
+                <img src="assets/images/logo.jpg" alt="Dorm Dash Logo" class="w-12 h-12 rounded-full">
+                <span class="text-indigo-500 ml-3 text-xl">Dorm Dash</span>
+            </a>
+            <p
+                class="text-sm text-gray-500 dark:text-gray-400 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 dark:border-gray-700 sm:py-2 sm:mt-0 mt-4">
+                © 2024
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode toggle functionality
+        const toggleBtn = document.getElementById('toggleDarkMode');
+        const theme = document.getElementById('theme');
+
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            toggleBtn.innerText = "Light Mode";
+        } else {
+            document.documentElement.classList.remove('dark');
+            toggleBtn.innerText = "Dark Mode";
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.add('transitioning');
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+                toggleBtn.innerText = "Dark Mode";
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+                toggleBtn.innerText = "Light Mode";
+            }
+            setTimeout(() => {
+                document.documentElement.classList.remove('transitioning');
+            }, 300);
+        });
+    </script>
+</body>
+
+</html>

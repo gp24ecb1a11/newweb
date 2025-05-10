@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode Toggle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-black transition-colors duration-300" id="theme">
+    <div class="flex justify-center items-center h-screen">
+        <button id="toggleDarkMode" class="px-4 py-2 bg-gray-800 text-white rounded-md">
+            Toggle Dark Mode
+        </button>
+    </div>
+
+    <script>
+        const toggleBtn = document.getElementById('toggleDarkMode');
+        const theme = document.getElementById('theme');
+
+        toggleBtn.addEventListener('click', () => {
+            if (theme.classList.contains('bg-white')) {
+                theme.classList.remove('bg-white', 'text-black');
+                theme.classList.add('bg-gray-900', 'text-white');
+            } else {
+                theme.classList.remove('bg-gray-900', 'text-white');
+                theme.classList.add('bg-white', 'text-black');
+            }
+        });
+    </script>
+</body>
+</html>

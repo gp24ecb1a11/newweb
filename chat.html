@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+
+    <!-- ✅ Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+
+    <script src="firebase.js"></script> <!-- Your Firebase Config -->
+    <link rel="stylesheet" href="styles.css"> <!-- Optional CSS -->
+    <style>
+        /* Fade In Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scale Up Animation */
+        @keyframes scaleUp {
+            from {
+                transform: scale(0.95);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Slide In Animation */
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        /* Apply animations to elements */
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .animate-scale-up {
+            animation: scaleUp 0.3s ease-out forwards;
+        }
+
+        .animate-slide-in {
+            animation: slideIn 0.5s ease-out forwards;
+        }
+
+        /* Stagger children animations */
+        .stagger-children>* {
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .stagger-children>*:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .stagger-children>*:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .stagger-children>*:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .stagger-children>*:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .stagger-children>*:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        /* Chat specific styles */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        #chatBox {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .message {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 8px;
+            max-width: 70%;
+        }
+
+        .message.sent {
+            background-color: #007bff;
+            color: white;
+            margin-left: auto;
+        }
+
+        .message.received {
+            background-color: #e9ecef;
+            color: #212529;
+        }
+
+        .input-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        #messageInput {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stagger-children">
+        <h2 class="animate-fade-in">Chat</h2>
+
+        <div id="chatBox" class="animate-scale-up"></div>
+
+        <div class="input-container animate-fade-in">
+            <input type="text" id="messageInput" placeholder="Type a message..."
+                class="transform hover:scale-105 transition-transform duration-200">
+            <button onclick="sendMessage()"
+                class="transform hover:scale-105 transition-transform duration-200">Send</button>
+        </div>
+    </div>
+
+    <script src="assets/js/chat.js"></script> <!-- Chat Logic -->
+</body>
+
+</html>

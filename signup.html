@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <script type="module" src="assets/js/signup.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Sign Up - Dorm Dash</title>
+    <style>
+        /* Fade In Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scale Up Animation */
+        @keyframes scaleUp {
+            from {
+                transform: scale(0.95);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Slide In Animation */
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        /* Apply animations to elements */
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .animate-scale-up {
+            animation: scaleUp 0.3s ease-out forwards;
+        }
+
+        .animate-slide-in {
+            animation: slideIn 0.5s ease-out forwards;
+        }
+
+        /* Stagger children animations */
+        .stagger-children>* {
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .stagger-children>*:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .stagger-children>*:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .stagger-children>*:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .stagger-children>*:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .stagger-children>*:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="text-gray-600 body-font bg-blue-500 animate-slide-in">
+        <div class="container mx-auto flex flex-wrap p-5 flex-row items-center justify-between">
+            <nav class="flex items-center text-base space-x-5">
+                <a href="index.html"
+                    class="hover:text-gray-900 text-white transform hover:scale-105 transition-transform duration-200">Home</a>
+                <a href="available_requests.html"
+                    class="hover:text-gray-900 text-white transform hover:scale-105 transition-transform duration-200">Available
+                    Requests</a>
+                <a href="make_order.html"
+                    class="hover:text-gray-900 text-white transform hover:scale-105 transition-transform duration-200">Make
+                    a Request</a>
+            </nav>
+            <a
+                class="absolute left-1/2 transform -translate-x-1/2 flex items-center text-white title-font font-medium transform hover:scale-105 transition-transform duration-200">
+                <img src="assets/images/logo.jpg" alt="Dorm Dash Logo" class="w-12 h-12 rounded-full">
+                <span class="ml-3 text-xl">Dorm Dash</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Sign-Up Form -->
+    <section class="text-gray-600 body-font">
+        <div class="container px-5 py-24 mx-auto flex flex-wrap items-center">
+            <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 animate-fade-in">
+                <h1 class="text-3xl text-gray-900">DORMDASH</h1>
+                <p class="mt-4">Tired of rushing to the main gate to collect your parcel? Dorm Dash is here to help!</p>
+            </div>
+            <div
+                class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 animate-scale-up">
+                <h2 class="text-lg text-gray-900 font-medium mb-5">Sign Up</h2>
+                <form id="signup-form" class="stagger-children">
+                    <input type="text" id="full-name" placeholder="Full Name"
+                        class="w-full mb-4 p-2 border rounded transform hover:scale-105 transition-transform duration-200">
+                    <input type="text" id="mobile-number" placeholder="Mobile Number"
+                        class="w-full mb-4 p-2 border rounded transform hover:scale-105 transition-transform duration-200">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="profile-photo">
+                            Your Photo
+                        </label>
+                        <input type="file" id="profile-photo" accept="image/*"
+                            class="w-full p-2 border rounded transform hover:scale-105 transition-transform duration-200">
+                        <p class="text-sm text-gray-500 mt-1">Upload a clear photo of yourself</p>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="aadhar">
+                            Aadhar Card Photo
+                        </label>
+                        <input type="file" id="aadhar" accept="image/*"
+                            class="w-full p-2 border rounded transform hover:scale-105 transition-transform duration-200">
+                        <p class="text-sm text-gray-500 mt-1">Upload a clear photo of your Aadhar card</p>
+                    </div>
+                    <label for="id-card" class="block font-medium mb-2">ID Card</label>
+
+                    <input type="file" id="id-card" accept="image/*"
+                        class="w-full mb-4 p-2 border rounded transform hover:scale-105 transition-transform duration-200">
+                    <input type="email" id="email" placeholder="Email"
+                        class="w-full mb-4 p-2 border rounded transform hover:scale-105 transition-transform duration-200">
+                    <input type="text" id="username" placeholder="Username"
+                        class="w-full mb-4 p-2 border rounded transform hover:scale-105 transition-transform duration-200">
+                    <input type="password" id="password" placeholder="Create Password"
+                        class="w-full mb-4 p-2 border rounded transform hover:scale-105 transition-transform duration-200">
+                    <button type="submit"
+                        class="bg-indigo-500 text-white py-2 px-8 rounded hover:bg-indigo-600 w-full transform hover:scale-105 transition-transform duration-200">Sign
+                        Up</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

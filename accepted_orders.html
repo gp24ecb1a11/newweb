@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accepted Orders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="assets/js/accepted_orders.js"></script>
+    <style>
+        /* Enhanced Fade In Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Enhanced Scale Up Animation */
+        @keyframes scaleUp {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Enhanced Slide In Animation */
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* New Bounce Animation */
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* New Pulse Animation */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* New Shine Effect */
+        @keyframes shine {
+            0% {
+                background-position: -100% 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        /* Apply animations to elements */
+        .animate-fade-in {
+            animation: fadeIn 0.7s ease-out forwards;
+        }
+
+        .animate-scale-up {
+            animation: scaleUp 0.5s ease-out forwards;
+        }
+
+        .animate-slide-in {
+            animation: slideIn 0.7s ease-out forwards;
+        }
+
+        .animate-bounce {
+            animation: bounce 2s infinite;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Stagger children animations with longer delays */
+        .stagger-children>* {
+            opacity: 0;
+            animation: fadeIn 0.7s ease-out forwards;
+        }
+
+        .stagger-children>*:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .stagger-children>*:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .stagger-children>*:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .stagger-children>*:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+
+        .stagger-children>*:nth-child(5) {
+            animation-delay: 1s;
+        }
+
+        /* Gradient background animation */
+        .gradient-bg {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Card hover effects */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Shine effect for buttons */
+        .shine-effect {
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            background-size: 200% 100%;
+            animation: shine 3s infinite;
+        }
+
+        /* Status badge animations */
+        .status-badge {
+            transition: all 0.3s ease;
+        }
+
+        .status-badge:hover {
+            transform: scale(1.1);
+        }
+
+        /* Order card animations */
+        .order-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .order-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-blue-50 to-indigo-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white animate-slide-in">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <nav class="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
+                <a href="index.html"
+                    class="mr-5 hover:text-white font-semibold p-2 bg-white/20 backdrop-blur-sm rounded-md transform hover:scale-105 transition-all duration-300 hover:shadow-lg">Home</a>
+                <a href="available_requests.html"
+                    class="mr-5 hover:text-white font-semibold p-2 bg-white/20 backdrop-blur-sm rounded-md transform hover:scale-105 transition-all duration-300 hover:shadow-lg">Available
+                    Requests</a>
+                <a href="make_order.html"
+                    class="mr-5 hover:text-white font-semibold p-2 bg-white/20 backdrop-blur-sm rounded-md transform hover:scale-105 transition-all duration-300 hover:shadow-lg">Make
+                    a Request</a>
+            </nav>
+            <a
+                class="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center text-white lg:items-center lg:justify-center mb-4 md:mb-0 transform hover:scale-105 transition-all duration-300">
+                <img src="assets/images/logo.jpg" alt="Dorm Dash Logo" class="w-12 h-12 rounded-full animate-bounce">
+                <span class="ml-3 text-xl">Dorm Dash</span>
+            </a>
+            <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
+                <span id="usernameDisplay" class="text-white text-lg hidden"></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="container mx-auto px-5 py-10">
+        <h1
+            class="text-3xl font-bold text-gray-800 mb-8 animate-fade-in bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+            Accepted Orders</h1>
+
+        <!-- Accepted Orders Section -->
+        <div class="bg-white/90 dark:bg-gray-800/90 rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Your Accepted Orders</h2>
+            <div id="acceptedOrdersContainer" class="space-y-4">
+                <!-- Orders will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Bargain Offers Section -->
+        <div class="bg-white/90 dark:bg-gray-800/90 rounded-lg shadow-lg p-6">
+            <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Accepted Bargain Offers</h2>
+            <div id="bargainOffersContainer" class="space-y-4">
+                <!-- Bargain offers will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-gray-600 text-center py-6 bg-white/50 backdrop-blur-sm animate-fade-in">
+        <p class="text-sm">© 2024 Dorm Dash. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
